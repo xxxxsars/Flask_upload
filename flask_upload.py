@@ -31,7 +31,12 @@ def s_filename(filename):
 
 @app.route('/')
 def show_entries():
-    return redirect(url_for('login'))
+    if "logged_in" not in session:
+        session['logged_in']=None
+    if session['logged_in']:
+        return redirect(url_for('upload_file'))
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route('/login', methods=['GET', 'POST'])

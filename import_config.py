@@ -6,4 +6,4 @@ DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'username'
 PASSWORD = 'password'
-UPLOAD_FOLDER= "C:\web"
+UPLOAD_FOLDER= "C:\新增資料夾"

@@ -1,0 +1,53 @@
+
+{% extends "layout.html" %}
+{% block body %}
+    <h2>Upload_file</h2>
+
+    <script type="text/javascript">
+        function UpladFile() {
+            // 获取文件对象
+            var fileObj = document.getElementById("file").files[0];
+            // 接收上传文件的后台地址
+            var FileController = "/upload";
+            // FormData 对象
+            var form = new FormData();
+            // 文件对象
+            form.append("file", fileObj);
+            // XMLHttpRequest 对象
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", FileController, true);
+            xhr.onload = function () {
+                //console.log("上传完成!");
+            };
+            xhr.upload.addEventListener("progress", progressFunction, false);
+            xhr.send(form);
+        }
+        function progressFunction(evt) {
+            var progressBar = document.getElementById("progressBar");
+            var percentageDiv = document.getElementById("percentage");
+            if (evt.lengthComputable) {
+                progressBar.max = evt.total;
+                progressBar.value = evt.loaded;
+                percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + "%";
+            }
+        }
+
+</script>
+    <form  method="POST" action="" enctype=multipart/form-data>
+    <p><input type="file" id="file" name="file" /></p>
+          <p>Upload Path</p>
+                <select name="comp_select">
+                    {% for folder in folders %}
+
+                    <option>{{ folder }}</option>
+                   {% endfor %}
+                </select>
+              <input type="submit" onclick="UpladFile()" value="Upload" />
+              <progress id="progressBar" value="0" max="100">
+              </progress>
+              <span id="percentage"></span>
+         <p></p>
+    </form>
+    <a href="{{ url_for('delete_file') }}">Delete File Page</a>
+
+{% endblock %}

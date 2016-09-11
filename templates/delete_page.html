@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+ <form  method="POST" action="" >
+
+                <select name="comp_select">
+                    {% for folder in folders %}
+                    <option>{{ folder }}</option>
+                   {% endfor %}
+                </select>
+              <input type="submit" value="Delete" />
+
+    </form>
+{% endblock %}

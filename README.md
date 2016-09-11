@@ -46,7 +46,7 @@ def login():
             flash('You were logged in')
             return redirect(url_for('upload_file'))
     return render_template('login.html', error=error)
-    ```
+```
 4.登出直接移除session中的logged_in資料
 5.上傳因程式碼較長，直接參閱檔案，主要步驟有  
   *     透過處理將跟目錄下的子目錄放到list中，並放到select標籤中

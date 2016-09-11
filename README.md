@@ -48,7 +48,8 @@ def login():
     return render_template('login.html', error=error)
     ```
 4.登出直接移除session中的logged_in資料
-5.上傳因程式碼較長，直接參閱檔案，主要步驟有
+5.上傳因程式碼較長，直接參閱檔案，主要步驟有  
+
   +  透過處理將跟目錄下的子目錄放到list中，並放到select標籤中
   +  查詢是否已登入，登入才可以坐上傳動作
   +  當檔案選擇後可以直接上傳，並透過js處理進度條
